@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="pt-br"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Doce Gestão</title>
+<style>
+ body{font-family:system-ui,sans-serif;background:#fffaf3;color:#3b2412;margin:0}
+ nav{background:#3b2412;padding:12px 24px;display:flex;gap:20px;align-items:center}
+ nav a{color:#ffe0ea;text-decoration:none} nav b{color:#fff;margin-right:auto}
+ main{max-width:860px;margin:24px auto;padding:0 16px}
+ table{width:100%;border-collapse:collapse;background:#fff;border-radius:8px;overflow:hidden}
+ th,td{padding:10px;text-align:left;border-bottom:1px solid #ffe0ea} th{background:#fff1f5}
+ .btn{display:inline-block;background:#c93a68;color:#fff;border:0;padding:8px 14px;border-radius:8px;text-decoration:none;cursor:pointer;font-size:14px}
+ .btn.alt{background:#fff;color:#3b2412;border:1px solid #fbc2d4}
+ input,select{padding:8px;border:1px solid #fbc2d4;border-radius:8px;width:100%;box-sizing:border-box}
+ .msg{padding:10px 14px;border-radius:8px;margin-bottom:12px;color:#fff}
+ .success{background:#059669}.error{background:#dc2626}
+ .erro{color:#dc2626;font-size:13px} .topo{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:12px}
+ .card{background:#fff;padding:20px;border-radius:12px;border:1px solid #ffe0ea}
+</style></head><body>
+<nav><b>🍰 Doce Gestão</b><a href="{% url 'produto_lista' %}">Produtos</a><a href="{% url 'categoria_lista' %}">Categorias</a></nav>
+<main>
+{% for m in messages %}<div class="msg {{ m.tags }}">{{ m }}</div>{% endfor %}
+{% block content %}{% endblock %}
+</main></body></html>

@@ -1,0 +1,7 @@
+{% extends 'loja/base.html' %}
+{% block content %}
+<h1>{{ titulo }}</h1>
+<form method="post" class="card">{% csrf_token %}
+{% for campo in form %}<p><label>{{ campo.label }}</label>{{ campo }}{% for e in campo.errors %}<span class="erro">{{ e }}</span>{% endfor %}</p>{% endfor %}
+<button class="btn">Salvar</button> <a class="btn alt" href="{{ voltar }}">Cancelar</a></form>
+{% endblock %}

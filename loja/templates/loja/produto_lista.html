@@ -1,0 +1,9 @@
+{% extends 'loja/base.html' %}
+{% block content %}
+<div class="topo"><h1>Produtos</h1><a class="btn" href="{% url 'produto_criar' %}">+ Novo produto</a></div>
+<form method="get" class="topo"><input name="q" placeholder="Buscar por nome" value="{{ request.GET.q }}"><button class="btn alt">Buscar</button></form>
+<table><tr><th>Nome</th><th>Categoria</th><th>Preço</th><th>Estoque</th><th></th></tr>
+{% for p in produtos %}<tr><td>{{ p.nome }}</td><td>{{ p.categoria }}</td><td>R$ {{ p.preco }}</td><td>{{ p.estoque }}</td>
+<td><a class="btn alt" href="{% url 'produto_editar' p.pk %}">Editar</a> <a class="btn alt" href="{% url 'produto_excluir' p.pk %}">Excluir</a></td></tr>
+{% empty %}<tr><td colspan="5">Nenhum produto cadastrado.</td></tr>{% endfor %}</table>
+{% endblock %}

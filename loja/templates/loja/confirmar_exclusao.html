@@ -1,0 +1,6 @@
+{% extends 'loja/base.html' %}
+{% block content %}
+<form method="post" class="card">{% csrf_token %}
+<h2>Confirmar exclusão</h2><p>Deseja realmente excluir <b>{{ object }}</b>? Esta ação não pode ser desfeita.</p>
+<button class="btn">Sim, excluir</button> <a class="btn alt" href="{{ voltar }}">Cancelar</a></form>
+{% endblock %}
