@@ -1,0 +1,13 @@
+{% extends 'loja/base.html' %}
+{% block content %}
+<div style="max-width:380px;margin:40px auto">
+<h1>Entrar</h1>
+<form method="post" class="card">{% csrf_token %}
+{% if form.errors %}<p class="erro">Usuário ou senha incorretos.</p>{% endif %}
+{% if next %}<input type="hidden" name="next" value="{{ next }}">{% endif %}
+<p><label>Usuário</label>{{ form.username }}</p>
+<p><label>Senha</label>{{ form.password }}</p>
+<button class="btn" style="width:100%">Entrar</button>
+<p style="text-align:center;font-size:14px">Não tem conta? <a href="{% url 'cadastro' %}">Criar conta</a></p>
+</form></div>
+{% endblock %}

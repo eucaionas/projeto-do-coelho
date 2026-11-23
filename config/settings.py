@@ -15,6 +15,7 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'loja.middleware.VisitasMiddleware',
 ]
 ROOT_URLCONF = 'config.urls'
 TEMPLATES = [{
@@ -34,3 +35,12 @@ USE_I18N = True
 USE_TZ = True
 STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Login
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'produto_lista'
+LOGOUT_REDIRECT_URL = 'login'
+
+# Sessão
+SESSION_COOKIE_AGE = 120            # expira em 2 minutos
+SESSION_SAVE_EVERY_REQUEST = True   # cada clique renova o prazo

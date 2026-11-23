@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="pt-br"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Doce Gestão</title>
+<title>Projeto do Coelho</title>
 <style>
  body{font-family:system-ui,sans-serif;background:#fffaf3;color:#3b2412;margin:0}
  nav{background:#3b2412;padding:12px 24px;display:flex;gap:20px;align-items:center}
@@ -16,7 +16,11 @@
  .erro{color:#dc2626;font-size:13px} .topo{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:12px}
  .card{background:#fff;padding:20px;border-radius:12px;border:1px solid #ffe0ea}
 </style></head><body>
-<nav><b>🍰 Doce Gestão</b><a href="{% url 'produto_lista' %}">Produtos</a><a href="{% url 'categoria_lista' %}">Categorias</a></nav>
+<nav><b>🐰 Projeto do Coelho</b>
+{% if user.is_authenticated %}<a href="{% url 'produto_lista' %}">Produtos</a><a href="{% url 'categoria_lista' %}">Categorias</a><a href="{% url 'venda_lista' %}">Vendas</a>
+<span style="color:#fbc2d4;font-size:13px">Olá, {{ user.username }} · páginas vistas na sessão: {{ request.session.visitas|default:0 }}</span>
+<form method="post" action="{% url 'logout' %}" style="margin:0">{% csrf_token %}<button class="btn alt" style="padding:4px 10px">Sair</button></form>
+{% endif %}</nav>
 <main>
 {% for m in messages %}<div class="msg {{ m.tags }}">{{ m }}</div>{% endfor %}
 {% block content %}{% endblock %}
